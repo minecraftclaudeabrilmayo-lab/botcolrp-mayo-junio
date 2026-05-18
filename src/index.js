@@ -51,5 +51,22 @@ process.on('uncaughtException', (err) => {
   console.error('[UNCAUGHT EXCEPTION]', err);
 });
 
+// ── Auto-deploy de comandos al iniciar ───────────────────
+const { REST, Routes } = require('discord.js');
+
+async function deployCommands() {
+  try {
+    const commandsData = [...client.commands.values()].map(c => c.data.toJSON());
+    const rest = new REST().setToken(process.env.DISCORD_TOKEN);
+    await rest.put(
+      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+      { body: commandsData }
+    );
+    console.log(`✅ ${commandsData.length} comando(s) registrados automáticamente.`);
+  } catch (err) {
+    console.error('❌ Error al registrar comandos:', err);
+  }
+}
+
 // ── Login ─────────────────────────────────────────────────
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN).then(() => deployCommands());
