@@ -1,0 +1,20 @@
+{
+  "name": "colombia-roleplay-bot",
+  "version": "1.0.0",
+  "description": "Bot de cédulas automáticas para Colombia Roleplay",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "node src/deploy-commands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "canvas": "^2.11.2",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "better-sqlite3": "^9.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
