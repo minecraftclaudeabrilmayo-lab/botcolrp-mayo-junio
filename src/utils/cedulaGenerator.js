@@ -2,7 +2,7 @@
 // GENERADOR DE CÉDULA - Colombia Roleplay Bot
 // Canvas: genera la imagen de la cédula automáticamente
 // ============================================================
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
 
 // ── Dimensiones de la cédula (proporción real cédula colombiana) ──
